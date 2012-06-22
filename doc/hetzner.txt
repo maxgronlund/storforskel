@@ -17,8 +17,8 @@ production:
   encoding: unicode
   database: storforskel
   pool: 5
-  username: suFee0ahbahz5j
-  password: Lie9vo0Xi
+  username: synthmax
+  password: synthmax
 
  Hit 'return'
  Slut med ctrl-d
@@ -54,6 +54,8 @@ a2dissite storforskel
 ctrl-d to logout
 ssh 	deploy@46.4.64.81
 mkdir /var/www/storforskel/shared/uploads
+mkdir /usr/local/rvm/bin/rvm-shell
+/usr/local/rvm/bin/rvm-shell
 
 try 
 $bundle exec rake RAILS_ENV=production  assets:precompile --trace
