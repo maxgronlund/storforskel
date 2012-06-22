@@ -1,0 +1,90 @@
+############################### Hertzner ############################### 
+
+I projekt (Capistrano del 1)
+ Installer capistrano: gem install capistrano
+ Kopier Capfile (fra template)
+ Kopier og tilpas config/deploy.rb  (fra template)
+ cap deploy:setup
+
+På server (fra terminal )
+ ssh deploy@46.4.64.81
+# mysqladmin -u root create tue-keramik
+ mkdir /var/www/tue-keramik/shared/config
+ cat > /var/www/tue-keramik/shared/config/database.yml 
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: template
+  pool: 5
+  username: synthmax
+  password: synthmax
+
+ Hit 'return'
+ Slut med ctrl-d
+ Log out med med ctrl-d
+
+ssh root@46.4.64.81 (password from pastor )
+cat > /etc/apache2/sites-available/tue-keramik   (log in as root)
+  
+
+<VirtualHost *:80>
+     ServerName tue-keramik.com
+     ServerAlias *.tue-keramik.com
+     XSendfile on
+     XSendFilePath /var/www/tue-keramik.com
+     DocumentRoot /var/www/tue-keramik/current/public
+     <Directory /var/www/tue-keramik/current/public>
+       ExpiresActive On
+       <FilesMatch "\.(ico|gif|jpe?g|png|js|css)$">
+         ExpiresDefault "access plus 1 year"
+       </FilesMatch>
+     </Directory>
+</VirtualHost>
+
+
+Slut med ctrl-d
+a2ensite tue-keramik
+/etc/init.d/apache2 restart
+
+// to remove site
+a2dissite tue-keramik
+
+
+ctrl-d to logout
+ssh 	deploy@46.4.64.81
+mkdir /var/www/tue-keramik/shared/uploads
+
+try bundle exec rake RAILS_ENV=production  assets:precompile --trace
+rake RAILS_ENV=development  assets:precompile --trace
+
+
+
+I projekt (Capistrano del 2)
+cap deploy
+cap deploy:migrations
+
+Kør evt. seeds
+ssh 	deploy@46.4.64.81
+cd /var/www/tue-keramik/current
+RAILS_ENV=production bundle exec rake db:drop
+RAILS_ENV=production bundle exec rake db:create
+RAILS_ENV=production bundle exec rake db:migrate
+RAILS_ENV=production bundle exec rake db:populate
+
+RAILS_ENV=production bundle exec rake db:seed
+
+RAILS_ENV=production  rake ts:conf
+RAILS_ENV=production rake ts:index
+RAILS_ENV=production rake ts:start
+
+
+
+read log file:
+cap invoke COMMAND='tail -200 /var/www/gogiver/shared/log/production.log'
+
+husk at oprette lib til upladads i assets folderen som deploy
+ssh deploy@46.4.64.81
+mkdir/var/www/tue-keramik/shared/uploads
+
+under shared dir

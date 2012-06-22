@@ -1,0 +1,8 @@
+= render 'shared/navigation_menu'
+
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Sign up <small>Join the club</small>
+    == render 'form'

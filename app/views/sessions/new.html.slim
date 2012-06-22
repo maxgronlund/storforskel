@@ -1,0 +1,30 @@
+= render 'shared/navigation_menu'
+
+.container
+  .content
+    .page-header
+      h1 Sign in <small>Access features for members only</small>
+    .row
+      .span3
+
+        h3 Lost the keys?
+        br
+        = link_to "reset password", new_password_reset_path, :class =>'btn danger'
+      .span9
+        = form_tag sessions_path do
+          .inputs
+            'email
+            br
+            = text_field_tag :email, params[:email]
+            br
+            'password
+            br
+            = password_field_tag :password
+            br
+            = check_box_tag :remember_me
+            '&nbsp; remember me
+          .actions
+            = submit_tag  'sign in', :class =>"btn btn-primary"
+            '&nbsp;
+            = link_to 'cancel', :back, :class =>"btn"
+    

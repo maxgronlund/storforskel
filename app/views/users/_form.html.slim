@@ -1,0 +1,55 @@
+.row
+  = simple_form_for @user, :html => { :class => 'form-vertical' } , :validate => true do |f| 
+    = f.error_notification
+    .span4
+      ul class="thumbnails"
+        li class="span3"
+          .thumbnail
+            = image_tag(@user.image_url :large)
+            .caption
+              - unless @user.image_url == '/assets/fallback/default.png'
+                = link_to 'Edit image', crop_user_path(@user, :version => :large), :class =>'btn btn-mini'
+                br
+                br
+                label class="checkbox"
+                  input id="optionsCheckbox" type="checkbox" value="option1" name="user[remove_image]
+                  '&nbsp;Remove Image
+    
+    .span8
+      == render 'shared/messages'
+      fieldset
+        .row
+          .span4
+      
+    
+            = f.input :name
+            = f.input :email
+            = f.input :password
+            = f.input :password_confirmation
+            = f.input :image, :input_html => {:class =>"user_name"}
+            = f.hidden_field :image_cache
+            br
+            - if @user.id ==1
+              = f.input :role , :include_blank => false , :collection => User::ROLES
+          .span4
+            '&nbsp
+           
+  
+  
+      .form-actions
+        = f.submit 'Save', :class =>"btn btn-primary", :name => nil
+        '&nbsp;
+        = submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" 
+      
+      
+    
+      
+    
+      
+      
+  
+    
+      
+      
+    
+      

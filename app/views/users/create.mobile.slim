@@ -1,0 +1,9 @@
+.type-interior data-role="page"
+  .foo data-role="header" data-theme="f"
+    h1 Party time
+    = link_to 'home', root_path, :'data-icon' =>"home", :'data-iconpos'=>"notext", :'data-direction'=>"reverse", :class=>"ui-btn-left jqm-home"
+
+
+  .foo data-role="content"
+    .content-primary
+      = link_to "OK that's  GREAT!", root_path, :"data-role"=>"button" , :name => nil, :'data-theme' => 'a'

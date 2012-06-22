@@ -1,0 +1,59 @@
+- current_object = eval("@#{controller.controller_name.singularize}")
+- content_for :head do
+  javascript:
+    $(function() {
+      $('#cropbox').Jcrop({
+        onChange: update_crop,
+        onSelect: update_crop,
+        setSelect: [#{current_object.crop_x || 0}, #{current_object.crop_y || 0}, #{current_object.crop_w || current_object.image_geometry[:width]}, #{current_object.crop_h || current_object.image_geometry[:height]}],
+        aspectRatio: #{@version_geometry_width} / #{@version_geometry_height}
+      });
+    });
+
+    function update_crop(coords) {
+      var rx = #{@version_geometry_width}/coords.w;
+      var ry = #{@version_geometry_height}/coords.h;
+      var lw = $('#cropbox').width();   // = @version_geometry_width
+      var lh = $('#cropbox').height();  // = @version_geometry_height
+      var ratio = #{current_object.image_geometry[:width]} / lw;
+    
+      $('#preview').css({
+        width: Math.round(rx * lw) + 'px',
+        height: Math.round(ry * lh) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
+      $("#crop_x").val(Math.round(coords.x * ratio));
+      $("#crop_y").val(Math.round(coords.y * ratio));
+      $("#crop_w").val(Math.round(coords.w * ratio));
+      $("#crop_h").val(Math.round(coords.h * ratio));
+    }
+
+
+= render 'shared/navigation_menu'
+
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+        h1 Edit image <small>&nbsp;Adjust the image cropping</small>
+
+    .row
+    .jcrop
+      .span12
+        h3 Preview
+        .preview style="width:#{@version_geometry_width}px; height:#{@version_geometry_height}px; overflow:hidden;"
+          = image_tag current_object.image_url, :id => "preview"
+        = form_for current_object, :url => { :action => "crop_update" } do |f|
+          - for attribute in [:crop_x, :crop_y, :crop_h, :crop_w]
+            = f.hidden_field attribute, :id => attribute
+          = f.hidden_field :crop_version, :value => @crop_version
+          .form-actions
+            = f.submit "Save", :class => "btn btn-primary"
+      
+            
+      .span8
+      
+        = image_tag current_object.image_url, :id => "cropbox"
+      
+    

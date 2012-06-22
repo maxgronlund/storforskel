@@ -1,0 +1,31 @@
+- content_for :head do
+  meta name="viewport" content="initial-scale=1, maximum-scale=1"
+
+.type-home data-role="page"
+
+  .foo data-role="header"
+    h1 jQuery Mobile
+  
+  
+  .foo data-role="content"
+    .content-secondary
+      #jqm-homeheader
+        h1 id="jqm-logo"
+          =image_tag('mobile_on_rails_logo.png')
+      p class='intro'
+        strong Welcome. &nbsp;
+        'A starting point for a site based on JQuery mobile
+      ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f"
+        li data-role="list-divider"
+          'Overview
+        
+        - if current_user
+          li class="log_out" = link_to 'Log out', log_out_path
+        - else
+          li =link_to 'Log in', log_in_path
+          li = link_to 'Sign up', sign_up_path
+        /li =link_to 'Posts', posts_path
+        li =link_to 'Users', users_path
+
+    .content-primary
+

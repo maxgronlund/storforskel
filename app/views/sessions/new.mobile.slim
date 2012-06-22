@@ -1,0 +1,24 @@
+.type-interior data-role="page"
+  .foo data-role="header" data-theme="f"
+    h1 Log in
+    = link_to 'home', root_path, :'data-icon' =>"home", :'data-iconpos'=>"notext", :'data-direction'=>"reverse", :class=>"ui-btn-left jqm-home"
+      
+  .foo data-role="content"
+    .content-primary
+      = form_tag sessions_path, :id => 'sign_in_form' do
+
+        'email
+        br
+        = text_field_tag :email, params[:email]
+        br
+        'password
+        br
+        = password_field_tag :password
+        br
+        /= render 'checkbox'
+        = check_box_tag :remember_me, :class => "custom"
+        label for="remember_me" Remember me
+        hr
+        = submit_tag  'Sign in', :method => 'post', :'data-theme' => 'a'
+        = link_to 'Not a menber?', sign_up_path, :'data-role'=>"button"
+

@@ -1,0 +1,5 @@
+.type-interior data-role="page"
+  .foo data-role="header" data-theme="f"
+    h1 Edit profile
+    = link_to 'home', root_path, :'data-icon' =>"home", :'data-iconpos'=>"notext", :'data-direction'=>"reverse", :class=>"ui-btn-left jqm-home"
+  == render 'form'

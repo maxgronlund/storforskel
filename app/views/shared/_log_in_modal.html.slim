@@ -1,0 +1,27 @@
+.modal.fade id="loginModal"
+  .modal-header
+    a class="close" data-dismiss="modal"
+      '×
+    h3 Log in
+
+    .modal-body
+      = form_tag sessions_path do
+        .inputs
+          'email
+          br
+          = text_field_tag :email, params[:email]
+          br
+          'password
+          br
+          = password_field_tag :password
+          br
+          = check_box_tag :remember_me
+          '&nbsp; remember me
+        .modal-footer
+          = link_to 'Not a Member?', sign_up_path
+          '&nbsp;  &nbsp;
+          = link_to 'Lost Password?', new_password_reset_path
+          '&nbsp;  &nbsp; &nbsp;  &nbsp;
+          = submit_tag  'Sign In', :class =>"btn btn-primary"
+          a href="#" class="btn" data-dismiss="modal"
+            'Cancel

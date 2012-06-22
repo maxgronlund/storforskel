@@ -1,0 +1,70 @@
+.menu_item{
+  background-color: #F5F5F5;
+  border: 1px solid #E5E5E5;
+  padding:4px;
+  margin-bottom:4px; 
+}
+
+.admin-tools{
+  width:74px;
+  display:inline-block;
+}
+
+.menu-item-link{
+  width:300px;
+  display:inline-block;
+}
+
+.sortable-row{
+  background-color: #F5F5F5;
+  border: 1px solid #E5E5E5;
+  padding:4px;
+  margin-bottom:4px; 
+  
+
+
+}
+
+.sortable-row .box1{
+  margin-left:10px;
+  width:240px;
+  display:inline-block;
+  vertical-align:text-top;
+
+
+}
+
+.sortable-row .box2{
+  width:140px;
+  display:inline-block;
+
+  vertical-align:text-top;
+
+}
+
+.sortable-row .box3{
+  width:74px;
+  display:inline-block;
+
+  vertical-align:text-top;
+
+}
+
+.bug a{
+  color:#904;
+}
+
+.section {
+  background-color: #F5F5F5; 
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section .navbar{
+  margin-top:10px;
+  margin-bottom:6px;
+}
+
+.section-slot {
+    background-color: #ddd; 
+
+}

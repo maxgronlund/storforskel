@@ -1,0 +1,18 @@
+.container
+  .content.top-void
+    h1 Reset Password <small>Lost it at the party</small>
+    .row
+      .span4
+        'g
+      .span12
+        = form_tag password_resets_path, :method => :post do
+          .field
+            = label_tag :email
+            = text_field_tag :email, params[:email] 
+          .actions
+            = link_to 'cancel', :back, :class =>'btn'
+            '&nbsp;
+            = submit_tag "Reset Password", :class => 'btn primary'
+        
+    
+    

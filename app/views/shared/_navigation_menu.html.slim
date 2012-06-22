@@ -1,0 +1,27 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
+
+      a class="brand" href="#"CMS
+      .nav-collapse
+        ul class="nav
+          - if can_edit?
+            li = link_to 'Admin', admin_index_path
+          
+          - if user_signed_in?
+            li
+              = link_to 'My account', current_user
+          li
+            - if user_signed_in?
+              = link_to 'Log Out', log_out_path
+            -else
+              a data-toggle="modal" href="#loginModal" rel="nofollow"
+                'Sign In
+
+
+
+    

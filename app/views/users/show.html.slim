@@ -1,0 +1,47 @@
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1#{@user.name} <small>Account info</small>
+    == render 'shared/messages'
+    .row
+      .span4
+        ul class="thumbnails"
+          li class="span3"
+            .thumbnail
+              =image_tag(@user.image_url :large)
+              .caption
+                h5 Email: <small>#{ @user.email}</small>
+                - if can?(:manage, User)
+                  .pull-right
+                    =link_to 'Edit Account', edit_user_path(@user), :class => 'btn btn-mini btn-primary'
+                  br
+      .span4
+        '&nbsp;
+       
+        
+      .span4
+        
+        
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

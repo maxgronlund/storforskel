@@ -1,0 +1,41 @@
+.type-interior data-role="page"
+  h1 Users
+  = link_to 'home', root_path, :'data-icon' =>"home", :'data-iconpos'=>"notext", :'data-direction'=>"reverse", :class=>"ui-btn-left jqm-home"
+  
+  oo data-role="content"
+  .content-primary
+    h2 Find
+    
+    = form_tag users_path, :method => 'get', :id => "products_search" do
+      = text_field_tag :search, params[:search] 
+      fieldset class="ui-grid-a"
+        .ui-block-a
+          = submit_tag t('system.search'), :name => nil, :'data-theme' => 'a'
+        .ui-block-b
+          = link_to t('system.show_all'), users_path, :'data-role'=>"button", :'data-theme' => 'd'
+    
+
+    hr
+    br         
+    ul data-role="listview"
+      - @users.each do |user|
+        li 
+          = link_to user do 
+            = image_tag(user.image_url:thumb)
+            h3 = user.name
+            p = user.email
+    hr
+    = paginate @users     
+            
+  
+    
+  .content-secondary
+    'goes to the side
+
+
+
+
+
+    
+
+    

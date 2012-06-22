@@ -1,0 +1,20 @@
+.type-interior data-role="page"
+  .foo data-role="header" data-theme="f"
+    h1 = @user.name
+    = link_to 'home', root_path, :'data-icon' =>"home", :'data-iconpos'=>"notext", :'data-direction'=>"reverse", :class=>"ui-btn-left jqm-home"
+    
+
+  .foo data-role="content"
+    .content-primary
+      = image_tag(@user.image_url :large)
+      br
+      = @user.email
+      br
+      = @user.role
+
+      - if can?(:manage, @user)
+        '&nbsp;
+        =link_to image_tag('delete_16.png'), @user, :confirm => 'Are you sure?', :method => :delete unless @user.id == 1
+        '&nbsp;
+        =link_to image_tag('pencil_16.png'), edit_user_path(@user)
+

@@ -1,0 +1,13 @@
+= simple_form_for(blog) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :title, :input_html => { class: 'span4', placeholder: "A catching title"}, :label => false
+    = f.input :body, :input_html => { class: 'span4', rows: '4', placeholder: "Type something…"}, :label => false
+    = f.hidden_field :user_id
+    = f.hidden_field :site_id
+
+   
+
+  .pull-right.pjax-submit
+    = f.submit 'Create Post' , class: 'btn btn-mini'

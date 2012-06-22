@@ -1,0 +1,5 @@
+ul class="breadcrumb"
+  /- [:notice, :warning, :error, :failure, :success].each do |key|
+  - breadcrumbs.each do |name, url|
+    li =link_to "#{name}", "#{url}"
+    span class="divider" &#47;

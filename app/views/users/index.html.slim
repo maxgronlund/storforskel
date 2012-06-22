@@ -1,0 +1,71 @@
+
+= render 'shared/navigation_menu'
+
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Users <small>With login</small>
+      
+    .row
+      .span3
+        
+
+
+        h3 Sign up a new user
+        br
+        = link_to 'Create User', new_user_path, :rel => "popover", :class =>"btn btn-large btn-success", :'data-original-title'=>"Create a new user", :'data-content'=>"To sign up a new user all you need is an email and a password"
+        == render 'js/popovers'
+
+    
+      .span9
+        /h3 Find
+        /= form_tag users_path, :method => 'get', :class => "well form-search" do
+        /  = text_field_tag :search, params[:search], :class => 'input-medium search-query', :placeholder => 'Type name here'
+        /  '&nbsp;
+        /  = submit_tag 'Search', :class => 'btn btn-primary'
+        /  '&nbsp;
+        /  = link_to users_path do
+        /    .btn.btn-f
+        /      i class="icon-refresh"
+        /      '&nbsp;show all
+        /  
+        
+        table class="table table-striped"
+          thead
+            tr
+              th Name
+              th Email
+              th Role
+              th Manage
+          tbody
+            - @users.each do |user|
+              tr
+                td = link_to user.name, user, :rel=>'tooltip', :title=>"Show account for #{user.name}"
+                td = user.email
+                td = user.role
+                td 
+                  a href="#{user_path(user)}" rel="tooltip" title="Show account for #{user.name}"
+                    i class="icon-eye-open"
+                  '&nbsp;
+                  
+                  a href="#{edit_user_path(user)}" rel="tooltip" title="Edit account for #{user.name}"
+                    i class="icon-pencil"
+                  '&nbsp;
+                  
+                 
+                  - unless user.id == 1
+                    a href="#{user_path(user)}" data-confirm="Are you sure?" data-method="delete" rel="tooltip" title="Delete account for #{user.name}"
+                      i class="icon-trash"
+                    /=link_to(user, :title=>'Delete', :confirm => 'Are you sure?', :method => :delete)  do
+                    /  i class="icon-trash"
+   
+        == paginate(@users)
+        == render 'js/tooltips'
+    
+
+    
+    
+    
+    
+    

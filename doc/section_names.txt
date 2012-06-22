@@ -1,0 +1,7 @@
+product_list
+product
+menu
+text
+bootstrap_gallery
+product_info
+product_thumb

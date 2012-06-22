@@ -1,0 +1,112 @@
+rails g scaffold user email:string password_hash:string password_salt:string name:string role:string sign_in_count:string image:string auth_token:string password_digest:string
+
+
+# white list of languages:checkboxes
+rails g scaffold site title:string
+
+rails g scaffold language language:string
+rails g migration CreateLangualizations site_id:integer language_id:integer
+
+CreateCategorizations
+
+
+
+
+
+
+# custom controller
+# custom css file
+# *optional custom partials for sections
+# white list of sections for slots
+# sort list for slots
+
+√rails g scaffold Page title:string site:belongs_to
+
+
+√rails g model SectionSlot title:string page:belongs_to 
+√rails g scaffold Section title:string section_slot:belongs_to 
+√rails g controller  SectionSlot new  
+
+√rails g scaffold HorizontalMenu title:string site:belongs_to section:belongs_to   
+rails g scaffold Banner title:string section:belongs_to
+
+
+
+
+rails g scaffold MenuItem title:string web_address:string menuable_id:integer menuable_type:string horizontal_menu:belongs_to
+
+
+# shared partials
+# 
+rails g scaffold SectionWysiwyg SectionSlot:belongs_to title_gb:string title_se:string title_dk:string
+rails g scaffold SectionProductPreview SectionSlot:belongs_to title_gb:string title_se:string title_dk:string
+rails g scaffold SectionProductList SectionSlot:belongs_to title_gb:string title_se:string title_dk:string
+
+rails g scaffold SectionGallery SectionSlot:belongs_to title_gb:string title_se:string title_dk:string
+rails g scaffold SectionGalleryImage SectionGallery:belongs_to title_gb:string title_se:string title_dk:string 
+
+rails g scaffold SectionText SectionSlot:belongs_to title_gb:string title_se:string title_dk:string body_gb:text body_se:text body_dk:text
+
+rails g migration AddImageToBanner image:string crop_params:text
+rails g migration AddLayoutToSite layout:string
+
+rails g controller Admin::SiteMenu edit
+rails g migration AddSiteIdToHorizontalMenu site:belongs_to
+
+
+rails g scaffold wysiwyg_section title:string body:text section:belongs_to
+
+rails g scaffold image_carousel title:string gallery_enabled_id:integer gallery_enabled_type:string
+rails g scaffold artwork title:string caption:text url:string image:string crop_params:text image_carousel:belongs_to
+
+
+rails g scaffold blog title:string body:text user:belongs_to
+
+rails g scaffold event title:string body:text user:belongs_to
+
+rails g scaffold SiteBlog title:string section:belongs_to site:belongs_to
+ 	
+ 	
+
+rails g scaffold SiteMenu title:string site:belongs_to section:belongs_to
+
+rails g scaffold SubMenu title:string menu_item:belongs_to
+
+rails g scaffold DropDown title:string menu_item:belongs_to
+
+rails g scaffold CacheZapper zapping:boolean
+
+rails g scaffold Admin::task title:string body:text user:belongs_to status:string position:integer comment_able_id:integer comment_able_type:string
+
+rails g scaffold Admin::site_members title:string site:belongs_to section:belongs_to
+
+
+script/generate model tag name:string
+script/generate model tagging article_id:integer tag_id:integer
+
+
+rails g scaffold products item_number:string title:string enabled:boolean image:string crop_params:text 
+
+rails g scaffold configurable_place title:string 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+
+
+
+.foo data-role="content"
+  .content-primary
+    = simple_form_for @user,:id => 'sign_up_form', :validate => true do |f| 
+      'name
+      = f.input :name, :label => false, :input_html => {:class =>"user_name"}
+      
+      'email
+      = f.input :email, :label => false
+      
+      'password
+      = f.input :password, :label => false
+      
+      'password confirmation
+      = f.input :password_confirmation, :label => false
+
+      = f.hidden_field :role, :value => 'member'
+      
+      = f.submit t('system.save'), :class =>"btn primary"
+

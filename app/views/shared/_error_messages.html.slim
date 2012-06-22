@@ -1,0 +1,7 @@
+-if taget.errors.any?
+  div class="alert alert-error"
+    = link_to 'x', '#', :class => 'close', :'data-dismiss' => 'alert'
+    h3 = "#{pluralize(taget.errors.count, "error")}  prohibited this record from being saved:"
+    ul
+      - taget.errors.full_messages.each do |msg|
+        li= msg
