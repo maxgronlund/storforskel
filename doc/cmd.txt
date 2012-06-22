@@ -89,6 +89,10 @@ rails g scaffold products item_number:string title:string enabled:boolean image:
 
 rails g scaffold configurable_place title:string 
 
+rails g scaffold blog title:string body:text user:belongs_to image:string crop_params:text pdf_download:string
+
+
+
 
 
 

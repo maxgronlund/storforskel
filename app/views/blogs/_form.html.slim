@@ -1,0 +1,13 @@
+= simple_form_for(@blog) do |f|
+  = f.error_notification
+
+  .inputs
+  |     = f.input :title
+  |     = f.input :body
+  |     = f.association :user
+  |     = f.input :image
+  |     = f.input :crop_params
+  |     = f.input :pdf_download
+  | 
+  .actions
+    = f.button :submit

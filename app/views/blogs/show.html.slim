@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @blog.title
+p
+  strong Body:
+  = @blog.body
+p
+  strong User:
+  = @blog.user
+p
+  strong Image:
+  = @blog.image
+p
+  strong Crop params:
+  = @blog.crop_params
+p
+  strong Pdf download:
+  = @blog.pdf_download
+
+= link_to 'Edit', edit_blog_path(@blog)
+'|
+= link_to 'Back', blogs_path

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
-    acts_as_taggable
-    acts_as_taggable_on :skills, :interests
+  acts_as_taggable
+  acts_as_taggable_on :skills, :interests
   
   attr_accessor :tag_names
   after_save :assign_tags
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
-#  attr_accessor :password
+
   before_create { generate_token(:auth_token) }
   before_save :encrypt_password
 

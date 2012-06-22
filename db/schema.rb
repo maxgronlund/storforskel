@@ -11,20 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416073644) do
+ActiveRecord::Schema.define(:version => 20120622102307) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.integer  "site_id"
-    t.integer  "section_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.text     "crop_params"
+    t.string   "pdf_download"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "blogs", ["section_id"], :name => "index_blogs_on_section_id"
-  add_index "blogs", ["site_id"], :name => "index_blogs_on_site_id"
   add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
 
   create_table "ckeditor_assets", :force => true do |t|

@@ -1,0 +1,38 @@
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Blog indlæg<small>&nbsp;Historisk arkiv</small>
+    == render 'shared/messages'
+  
+ 
+
+    table
+      tr
+        th Title
+        th Body
+        th User
+        th Image
+        th Crop params
+        th Pdf download
+        th
+        th
+        th
+    
+      - @blogs.each do |blog|
+        tr
+          td = blog.title
+          td = blog.body
+          td = blog.user
+          td = blog.image
+          td = blog.crop_params
+          td = blog.pdf_download
+          td = link_to 'Show', blog
+          td = link_to 'Edit', edit_blog_path(blog)
+          td = link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete
+    
+    br
+    
+    = link_to 'New Blog', new_blog_path
+    

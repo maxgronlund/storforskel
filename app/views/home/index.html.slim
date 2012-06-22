@@ -1,12 +1,18 @@
 = render 'shared/navigation_menu'
 
 .container
-  .hero-unit
-    h1 Simple Rails CMS
-    p Building web sites made easy
-    - unless user_signed_in?
-      a class="btn btn-primary btn-large"  data-toggle="modal" href="#loginModal" rel="nofollow"
-        'Sign In
-    
+  .row
+    .span6
+      .super-size
+        h1 Storforskel.nu
+        p skaper positiv energi og fantastiske projekter i lokalområdet
+        /- unless user_signed_in?
+        /  a class="btn btn-primary btn-large"  data-toggle="modal" href="#loginModal" rel="nofollow"
+        /    'Sign In
+    .span6
+  .row
+    .span12
+      iframe width="560" height="315" src="http://www.youtube.com/embed/WdA86eK0Jp4" frameborder="0" allowfullscreen
+        
 
   
