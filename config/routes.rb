@@ -9,7 +9,12 @@ BootstrapOnRails::Application.routes.draw do
   
 
   
-  resources :users
+  resources :users do
+    member do
+      get 'crop'
+      put 'crop_update'
+    end
+  end
   get "admin/index"
   resources :sessions
   resources :password_resets
