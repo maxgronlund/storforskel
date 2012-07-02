@@ -25,6 +25,8 @@ production:
  Log out med med ctrl-d
 
 ssh root@46.4.64.81 (password bEigs3W3 )
+createdb -U synthmax storforskel
+(angiv synthmax som password)
 cat > /etc/apache2/sites-available/storforskel   (log in as root)
   
 
