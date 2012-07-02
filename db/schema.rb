@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622102307) do
+ActiveRecord::Schema.define(:version => 20120626072021) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120622102307) do
     t.string   "pdf_download"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "blog_subject"
   end
 
   add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
@@ -42,6 +43,26 @@ ActiveRecord::Schema.define(:version => 20120622102307) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "identities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -61,20 +82,15 @@ ActiveRecord::Schema.define(:version => 20120622102307) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
     t.string   "name"
     t.string   "role"
-    t.integer  "site_id"
     t.integer  "sign_in_count"
     t.string   "image"
     t.text     "crop_params"
     t.string   "auth_token"
-    t.string   "password_digest"
-    t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "provider"
+    t.string   "uid"
   end
-
-  add_index "users", ["site_id"], :name => "index_users_on_site_id"
 
 end

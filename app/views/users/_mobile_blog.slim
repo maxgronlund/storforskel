@@ -1,0 +1,9 @@
+h3 Indlæg
+hr
+-blogs.each do |blog|
+  h6=blog.title
+  i skrevet for #{distance_of_time_in_words(Time.now, blog.created_at)} siden
+  =simple_format blog.body.truncate(264)
+  
+  =link_to 'Læs hele artikelen og komentarer', blog
+  hr

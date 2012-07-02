@@ -1,0 +1,18 @@
+.blog
+  h3#{blog.title}
+  .row
+    .span4
+      .avatar
+        =link_to image_tag(blog.user.image_url :thumb), blog.user
+      .author
+        h5 Af #{link_to blog.user.name, blog.user} 
+        i skrevet for #{distance_of_time_in_words(Time.now, blog.created_at)} siden
+        ==render 'blogs/links', :blog => blog
+      .content
+    .span6
+      =simple_format blog.body.truncate(264)
+      
+      =link_to 'Læs hele artikelen og komentarer', blog, class: 'btn'
+hr
+      
+      

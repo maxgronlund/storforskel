@@ -1,0 +1,8 @@
+h1 Comments
+
+.comments
+  -@comments.each do |comment|
+    .commen
+      = simple_format comment.content 
+      
+= link_to "New Comment", [:new, @commentable, :comment]

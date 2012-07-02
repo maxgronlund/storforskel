@@ -2,9 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   helper_method :current_user
+  before_filter :set_locale
   
 private 
   def current_user
+      #@current_user = User.find(session[:user_id]) if session[:user_id]
       @current_user ||= User.find_by_auth_token( cookies[:auth_token]) if cookies[:auth_token]
   end
   
@@ -33,6 +35,20 @@ private
   def prepare_for_mobile
     session[:mobile_param] = params[:mobile] if params[:mobile]
     request.format = :mobile if mobile_device?
+  end
+  
+
+  def set_locale
+    I18n.locale = params[:locale] if params[:locale].present?
+    I18n.locale = 'da'
+    # current_user.locale
+    # request.subdomain
+    # request.env["HTTP_ACCEPT_LANGUAGE"]
+    # request.remote_ip
+  end
+
+  def default_url_options(options = {})
+    {locale: I18n.locale}
   end
   
   

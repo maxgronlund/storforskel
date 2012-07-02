@@ -93,7 +93,7 @@ rails g scaffold blog title:string body:text user:belongs_to image:string crop_p
 
 
 
-
+rails g controller sugestions index show
 
 
 

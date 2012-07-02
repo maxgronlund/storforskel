@@ -1,0 +1,5 @@
+-if can_edit?
+  br
+  = link_to 'Rediger', edit_user_blog_path(blog.user, blog)
+  '&nbsp
+  = link_to 'Slet', blog_path(blog), :confirm => 'Er du sikker?', :method => :delete

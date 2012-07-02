@@ -1,5 +1,10 @@
-h1 New blog
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Skriv et indlæg <small>&nbsp;</small>
+    == render 'shared/messages'
 
-== render 'form'
-
-= link_to 'Back', blogs_path
+    == render 'form'
+    = link_to 'Back', blogs_path

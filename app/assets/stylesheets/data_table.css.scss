@@ -1,0 +1,42 @@
+
+.data-table{
+  margin-top:32px;
+  tbody {
+  
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  }
+}
+
+.data-table{
+  margin-top:32px;
+  tbody {
+  
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  }
+}
+.ui-widget-header {
+  border: 1px solid #CCC;
+  background: #f3f3f3;
+  color: #222;
+  font-weight: bold;
+  
+  .dataTables_filter {
+  text-align: left;
+  }
+  select {
+    width: 80px;
+    background-color: white;
+    height: 28px;
+    line-height: 28px;
+  }
+}
+
+.ui-state-default {
+  border: 1px solid #CCC;
+  border-top:none;
+  background: #E6E6E6;
+  font-weight: normal/*{fwDefault}*/;
+  color: #555/*{fcDefault}*/;
+}

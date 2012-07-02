@@ -14,7 +14,12 @@
 // require admin/menu_item
 //= require admin/upload_image
 //= require equal-height
+//= require dataTables/jquery.dataTables
+//= require blogs
 // require_tree .
+
+
+
 $(document).ready(function() {
 	$('#myCarousel').carousel({
 	interval: 6000

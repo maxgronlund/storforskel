@@ -16,7 +16,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/assets/fallback/" + [version_name, "default.png"].compact.join('_')
+    "/assets/fallback/" + [version_name, "default.jpg"].compact.join('_')
   end
 
   # Process files as they are uploaded:
@@ -26,6 +26,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:  
   cattr_accessor :version_dimensions
   self.version_dimensions = {
+    :comment => [60, 60],
     :thumb => [100, 100],
     :large => [260, 325]
 

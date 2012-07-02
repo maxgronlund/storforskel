@@ -1,8 +1,10 @@
-h1 Editing blog
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Rediger indlæg <small>&nbsp;</small>
+    == render 'shared/messages'
 
-== render 'form'
-
-= link_to 'Show', @blog
-'|
-= link_to 'Back', blogs_path
-
+    == render 'form'
+    = link_to 'Back', blogs_path

@@ -1,0 +1,29 @@
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      .row
+        .span6
+          h1 Forslag<small>&nbsp; Ider til Storforskel.nu</small>
+          'Hvilken initiativer kan gører en storforskel i lystrup
+        /.span6
+        /  = form_tag blogs_path, :method => 'get', :class => "form-search" do
+        /    = text_field_tag :search, params[:search], :class => 'input-medium search-query', :placeholder => 'Titel'
+        /    '&nbsp;
+        /    = submit_tag 'Find', :class => 'btn btn-primary'
+        /    '&nbsp;
+        /    = link_to blogs_path do
+        /      .btn
+        /        i class="icon-refresh"
+        /        '&nbsp;Vis alle
+    == render 'shared/messages'
+
+    - @sugestions.each do |sugestion|
+      ==render 'blogs/short_artichle', :blog => sugestion
+    
+    /== paginate(@sugestions)      
+    
+    br
+    -if user_signed_in?
+      = link_to 'Skriv forslag', new_user_blog_path(current_user), class: 'btn btn-primary btn-large'

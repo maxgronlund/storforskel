@@ -4,28 +4,31 @@
 .type-home data-role="page"
 
   .foo data-role="header"
-    h1 jQuery Mobile
+    h1 STORFORSKEL.NU
   
   
   .foo data-role="content"
     .content-secondary
       #jqm-homeheader
-        h1 id="jqm-logo"
-          =image_tag('mobile_on_rails_logo.png')
-      p class='intro'
-        strong Welcome. &nbsp;
-        'A starting point for a site based on JQuery mobile
+        .logo
+          =image_tag 'regnbuelogo.png'
+      .intro
+        strong STORFORSKEL.NU &nbsp;
+        'skaper positiv energi og fantastiske projekter i lokalområdet
+      /iframe width="770" height="433" src="http://www.youtube.com/embed/WdA86eK0Jp4" frameborder="0" allowfullscreen
+      
       ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f"
         li data-role="list-divider"
-          'Overview
+          a href="http://www.youtube.com/watch?v=WdA86eK0Jp4"
+            'Se Videoen
         
         - if current_user
           li class="log_out" = link_to 'Log out', log_out_path
         - else
           li =link_to 'Log in', log_in_path
-          li = link_to 'Sign up', sign_up_path
+          /li = link_to 'Sign up', sign_up_path
         /li =link_to 'Posts', posts_path
-        li =link_to 'Users', users_path
+        /li =link_to 'Users', users_path
 
     .content-primary
 

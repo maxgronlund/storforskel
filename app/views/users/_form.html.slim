@@ -24,22 +24,23 @@
     
             = f.input :name
             = f.input :email
-            = f.input :password
-            = f.input :password_confirmation
+            -if @user.provider == 'identity'
+              = f.input :password
+              = f.input :password_confirmation
             = f.input :image, :input_html => {:class =>"user_name"}
             = f.hidden_field :image_cache
             br
-            - if @user.id ==1
-              = f.input :role , :include_blank => false , :collection => User::ROLES
+            - if can_edit?
+              -unless @user.role == 'super'
+                = f.input :role , :include_blank => false , :collection => User::ROLES
           .span4
             '&nbsp
            
   
   
       .form-actions
-        = f.submit 'Save', :class =>"btn btn-primary", :name => nil
-        '&nbsp;
-        = submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" 
+        = f.submit 'Save', :class =>"btn btn-primary btn-large", :name => nil
+        
       
       
     
