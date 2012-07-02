@@ -1,0 +1,9 @@
+= simple_form_for [@commentable, @comment] do |f| 
+
+  = f.hidden_field :user_id , :value => current_user.id
+  = f.input :content, :input_html => { class: 'span6',rows: '6', placeholder: "Skriv en genial og inspirerende kommentar her"}, :label => false
+  = f.submit 'Indsend kommentar', class: 'btn' 
+      
+
+  
+

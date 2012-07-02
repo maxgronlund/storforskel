@@ -1,27 +1,52 @@
 BootstrapOnRails::Application.routes.draw do
 
 
-  resources :blogs
+
+
+
+  get "comments/index"
+
+  get "comments/new"
 
   #  get "password_resets/new"
   get "sign_up" => "users#new", :as => "sign_up"
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
-
+  resources :sessions
+  resources :password_resets
+  
+  resources :identities
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
   
 
-  
+  resources :blogs do
+    resources :comments
+    member do
+      get 'crop'
+      put 'crop_update'
+    end
+  end
+  resources :comments
   resources :users do
+    resources :blogs
     member do
       get 'crop'
       put 'crop_update'
     end
   end
   get "admin/index"
-  resources :sessions
-  resources :password_resets
+  get "admin" => "admin#index"
+  get "blog_archive/index"
+  
+  
   mount Ckeditor::Engine => '/ckeditor'
   root :to => "home#index"  
+  
+  get "sugestions/index"
+  get "sugestions/show" 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -34,7 +34,19 @@ BootstrapOnRails::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # localization
+  config.i18n.available_locales = [:da, :en]
 end
 
 # configure slim to generate pretty html in development
 Slim::Engine.set_default_options :pretty => true
+
+
+ENV['TWITTER_CONSUMER_KEY'] = "eUQQgrhHndDcOc7gW3nIWw"
+ENV['TWITTER_CONSUMER_SECRET'] = '2mLqvktIxukB6cp1xAZSzVKrwKoCgTVE9iMrbdFomVU'
+
+
+ENV['FACEBOOK_CONSUMER_KEY'] = "466198460057291"
+ENV['FACEBOOK_CONSUMER_SECRET'] = '2f40d6b7edeea96c88cd1199ed9c17a8'
+

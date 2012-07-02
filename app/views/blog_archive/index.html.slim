@@ -1,0 +1,46 @@
+= render 'shared/navigation_menu'
+.container
+  .content
+    = render 'shared/breadcrumbs', :breadcrumbs => @breadcrumbs unless @breadcrumbs.nil?
+    .page-header
+      h1 Blog indlæg<small>&nbsp;Historisk arkiv</small>
+    == render 'shared/messages'
+  
+ 
+
+    .data-table
+      table id="blogs" class="display"
+        thead
+          tr
+            th Title
+            /th Body
+            th Af
+            th Skrevet
+            th Image
+            th Pdf download
+            th
+
+        tbody
+          - @blogs.each do |blog|
+            tr
+              td =link_to blog.title, blog
+              td = blog.user.name
+              td = blog.created_at.strftime("%d-%m-%Y")
+              td
+                -if blog.image_url != '/assets/fallback/default.png'
+                  =link_to 'vis', blog.image_url
+                
+              td 
+                -if blog.pdf_download_url != '/assets/fallback/default.pdf'
+                  =link_to 'download', blog.pdf_download_url
+              td 
+                = link_to 'Vis', blog
+                -if can_edit?
+                  '&nbsp;
+                  = link_to 'Rediger', edit_blog_path(blog)
+                  '&nbsp;
+                  = link_to 'Slet', blog, :confirm => 'Are you sure?', :method => :delete
+    
+    br
+    -if user_signed_in?
+      = link_to 'Skriv indlæg', new_user_blog_path(current_user), class: 'btn btn-primary btn-large'

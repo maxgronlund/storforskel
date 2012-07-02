@@ -1,0 +1,15 @@
+-@comments.each do |comment|
+  .comment
+    .avatar
+      =link_to image_tag(comment.user.image_url :comment), comment.user
+      
+    .author
+      
+      h5 #{link_to comment.user.name, comment.user} &nbsp;<small> for #{distance_of_time_in_words(Time.now, comment.created_at)} siden</small>
+      -if can?(:manage, comment)
+        =link_to 'Rediger', edit_comment_path(comment)
+        '&nbsp;
+        =link_to 'Slet', comment , :confirm => 'Er du sikker?', :method => :delete
+      br
+      = simple_format comment.content 
+    

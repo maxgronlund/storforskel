@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/assets/fallback/" + [version_name, "default.png"].compact.join('_')
+    "/assets/fallback/" + [version_name, "logo.jpg"].compact.join('_')
   end
 
   # Process files as they are uploaded:
@@ -27,7 +27,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   cattr_accessor :version_dimensions
   self.version_dimensions = {
     :thumb => [100, 100],
-    :large => [210, 252]
+    :large_horizontal => [560, 420],
+    :large_vertical => [420, 460]
 
   }
 

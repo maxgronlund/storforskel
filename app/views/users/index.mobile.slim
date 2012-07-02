@@ -10,7 +10,7 @@
       = text_field_tag :search, params[:search] 
       fieldset class="ui-grid-a"
         .ui-block-a
-          = submit_tag t('system.search'), :name => nil, :'data-theme' => 'a'
+          = submit_tag 'Find', :name => nil, :'data-theme' => 'a'
         .ui-block-b
           = link_to t('system.show_all'), users_path, :'data-role'=>"button", :'data-theme' => 'd'
     

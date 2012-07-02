@@ -1,13 +1,24 @@
-= simple_form_for(@blog) do |f|
-  = f.error_notification
-
+/= simple_form_for( [@user , @blog  ], :html => {:class => 'form-horizontal' })do |f|
+= simple_form_for( [@user , @blog ])do |f|
   .inputs
-  |     = f.input :title
-  |     = f.input :body
-  |     = f.association :user
-  |     = f.input :image
-  |     = f.input :crop_params
-  |     = f.input :pdf_download
-  | 
-  .actions
-    = f.button :submit
+    .row
+      .span6
+        = f.input :title, label: 'Overskrift'
+        = f.input :body, :input_html => { class: 'span6', rows: '6', placeholder: "Skriv en genial og inspirerende tekst her"}, :label => 'Tekst'
+        /= f.input :body, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Easy' }
+        = f.hidden_field :user_id
+        = f.input :image, label: 'Vedhæft billed'
+        
+        = f.input :pdf_download, label: 'Vedhæft pdf'
+      .span6
+        -if @blog.image_url != '/assets/fallback/logo.jpg'
+          ul class="thumbnails"
+            li class="span6"
+              .thumbnail
+                =image_tag(@blog.image_url :large_horizontal)
+                .caption
+                  input id="optionsCheckbox" type="checkbox" value="option1" name="blog[remove_image]
+                  '&nbsp;Fjern billed
+    
+  .form-actions
+    = f.submit 'Gem', class: 'btn btn-large btn-primary'

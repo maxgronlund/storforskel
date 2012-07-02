@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       @breadcrumbs = breadcrumbs
     end
     
-    
+    @blogs = @user.blogs.order("created_at desc").page(params[:page]).per(10)
     session[:go_to] = user_path(@user)
     respond_with( @user)
   end
@@ -92,10 +92,23 @@ class UsersController < ApplicationController
   def update
     
     remove_password_fields_if_blank! params[:user]
+    
+    
+    user_identity = Identity.find_by_email(@user.email)
+    unless user_identity.nil?
+      unencrypted_password = params[:user][:password].to_s
+      password_digest = BCrypt::Password.create(unencrypted_password)
+      user_identity.password_digest = password_digest;
+      user_identity.save!
+    end
+        
+        
     unless current_user && current_user.admin_or_super?
       params[:user].delete :role
       params[:user].delete :site_id
     end
+    params[:user].delete :password
+    params[:user].delete :password_confirmation
     @user.update_attributes(params[:user])
     
     if params[:user][:image] && params[:user][:remove_image] != '1'

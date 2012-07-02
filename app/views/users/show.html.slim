@@ -13,15 +13,17 @@
               =image_tag(@user.image_url :large)
               .caption
                 h5 Email: <small>#{ @user.email}</small>
-                - if can?(:manage, User)
-                  .pull-right
-                    =link_to 'Edit Account', edit_user_path(@user), :class => 'btn btn-mini btn-primary'
-                  br
+        - if can?(:manage, User)
+            =link_to 'Rediger konto', edit_user_path(@user)
+        
       .span4
         '&nbsp;
        
         
       .span4
+        h3 Indlæg skrevet af #{@user.name}
+        hr
+        == render 'blog', :blogs => @blogs
         
         
     

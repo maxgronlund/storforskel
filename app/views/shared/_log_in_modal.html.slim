@@ -2,26 +2,35 @@
   .modal-header
     a class="close" data-dismiss="modal"
       '×
-    h3 Log in
+    h3 Log ind
 
     .modal-body
-      = form_tag sessions_path do
-        .inputs
-          'email
+      = form_tag "/auth/identity/callback" do
+        .field
+          = label_tag :auth_key, "Email"
           br
-          = text_field_tag :email, params[:email]
+          = text_field_tag :auth_key
+
+        .field
+          = label_tag :password
           br
-          'password
-          br
-          = password_field_tag :password
-          br
-          = check_box_tag :remember_me
-          '&nbsp; remember me
+          = password_field_tag :password 
+
+        /.actions
+        /  = submit_tag "Login" 
+
         .modal-footer
-          = link_to 'Not a Member?', sign_up_path
+          = link_to 'Ikke medlem endnu?', new_identity_path
           '&nbsp;  &nbsp;
-          = link_to 'Lost Password?', new_password_reset_path
+          = link_to 'Glemt password?', new_password_reset_path
           '&nbsp;  &nbsp; &nbsp;  &nbsp;
-          = submit_tag  'Sign In', :class =>"btn btn-primary"
-          a href="#" class="btn" data-dismiss="modal"
-            'Cancel
+          = submit_tag  'Log ind', :class =>"btn btn-primary btn-large"
+          a href="#" class="btn btn-large" data-dismiss="modal"
+            'Fortryd
+        /h3 Log ind med
+        .social-login
+          
+          =link_to 'Log ind med Twitter', "/auth/twitter/", class: 'btn btn-large btn-info'
+          '&nbsp;
+          =link_to 'Log ind med Facebook', "/auth/facebook/", class: 'btn btn-large btn-primary'
+          br

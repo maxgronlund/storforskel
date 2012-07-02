@@ -11,8 +11,8 @@ gem 'mysql2'
 gem "cancan"
 gem "slim-rails"
 gem 'kaminari'
-gem 'redcarpet'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+#gem 'redcarpet'
+
 gem 'simple_form'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem 'carrierwave'
@@ -21,6 +21,14 @@ gem "ckeditor", "3.7.0.rc3"
 gem 'acts_as_list'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'rails-i18n'
+gem 'jquery_mobile_rails'
+
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-identity'
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer'
@@ -30,6 +38,8 @@ gem 'twitter-bootstrap-rails'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'populator'
 gem 'ffaker'
+gem 'quiet_assets', group: :development
+
 
 
 # Gems used only for assets and not required
@@ -43,6 +53,8 @@ gem 'ffaker'
 #
 #  gem 'uglifier', '>= 1.0.3'
 #  gem 'twitter-bootstrap-rails'
+    gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+    gem 'jquery-ui-rails'
 #end
 
 gem 'jquery-rails'

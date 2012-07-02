@@ -8,32 +8,33 @@ class User < ActiveRecord::Base
   after_save :assign_tags
   
   has_many :blogs
+  has_many :comments
   attr_accessible :name, :role, :email, :password, :password_confirmation, :tag_names
-  has_secure_password
-  validates_presence_of :name
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  #has_secure_password
+  #validates_presence_of :name
+  #validates_confirmation_of :password
+  #validates_presence_of :password, :on => :create
+  #validates_presence_of :email
+  #validates_uniqueness_of :email
 
   before_create { generate_token(:auth_token) }
-  before_save :encrypt_password
+  #before_save :encrypt_password
 
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-  
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
+  #def encrypt_password
+  #  if password.present?
+  #    self.password_salt = BCrypt::Engine.generate_salt
+  #    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+  #  end
+  #end
+  #
+  #def self.authenticate(email, password)
+  #  user = find_by_email(email)
+  #  if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+  #    user
+  #  else
+  #    nil
+  #  end
+  #end
 
   # Avatar image
   attr_accessible :image, :image_cache, :remove_image, :role
@@ -45,6 +46,8 @@ class User < ActiveRecord::Base
   # validate :name, :presence => true
   
   ROLES = %w[member admin super]
+  
+  
   
   def admin_or_super?
     admin? || super?
@@ -74,6 +77,7 @@ class User < ActiveRecord::Base
     user.id == 1
   end
 
+  
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
@@ -89,6 +93,34 @@ class User < ActiveRecord::Base
   
   def tag_names
     self.tag_list
+  end
+  
+  #def self.from_omniauth(auth)
+  #    #where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  #    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+  #end
+  #
+  #def self.create_from_omniauth(auth)
+  #  create! do |user|
+  #    user.provider = auth["provider"]
+  #    user.uid = auth["uid"]
+  #    #user.name = auth["info"]["nickname"]
+  #    user.name = auth["info"]["name"]
+  #    user.email = auth["info"]["email"]
+  #  end
+  #end
+  
+  def self.from_omniauth(auth)
+    find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
+  end
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+      user.email = auth["info"]["email"]
+    end
   end
   
 private

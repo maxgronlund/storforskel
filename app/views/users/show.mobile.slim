@@ -9,12 +9,14 @@
       = image_tag(@user.image_url :large)
       br
       = @user.email
-      br
-      = @user.role
+      == render 'mobile_blog', :blogs => @blogs
+      
+      /br
+      /= @user.role
 
-      - if can?(:manage, @user)
-        '&nbsp;
-        =link_to image_tag('delete_16.png'), @user, :confirm => 'Are you sure?', :method => :delete unless @user.id == 1
-        '&nbsp;
-        =link_to image_tag('pencil_16.png'), edit_user_path(@user)
+      /- if can?(:manage, @user)
+      /  '&nbsp;
+      /  =link_to image_tag('delete_16.png'), @user, :confirm => 'Are you sure?', :method => :delete unless @user.id == 1
+      /  '&nbsp;
+      /  =link_to image_tag('pencil_16.png'), edit_user_path(@user)
 
