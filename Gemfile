@@ -5,8 +5,8 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "pg"
-#gem 'mysql2'
+#gem "pg"
+gem 'mysql2'
 #gem 'inherited_resources'
 gem "cancan"
 gem "slim-rails"
@@ -58,6 +58,7 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

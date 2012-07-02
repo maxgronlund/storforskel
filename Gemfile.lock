@@ -92,6 +92,7 @@ GEM
     mini_magick (3.4)
       subexec (~> 0.2.1)
     multi_json (1.2.0)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -100,7 +101,6 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     orm_adapter (0.0.7)
-    pg (0.13.2)
     polyglot (0.3.3)
     populator (1.0.0)
     rack (1.4.1)
@@ -129,6 +129,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
+    rvm-capistrano (1.2.2)
+      capistrano (>= 2.0.0)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -183,11 +185,12 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick
+  mysql2
   nested_form!
-  pg
   populator
   rails (= 3.2.3)
   redcarpet
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   simple_form
   slim-rails

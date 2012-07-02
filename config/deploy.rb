@@ -1,5 +1,5 @@
 # RVM bootstrap
-$:.unshift(File.expand_path("~/.rvm/lib"))
+#$:.unshift(File.expand_path("~/.rvm/lib"))
 require 'rvm/capistrano'
 set :rvm_ruby_string, '1.9.2-p136'
 set :rvm_type, :user
@@ -46,8 +46,13 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
   end
+
+  task :symlink_database_yml, :roles => :app do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
 end
 
+after 'deploy:finalize_update', 'deploy:symlink_database_yml'
 after 'deploy:update_code', 'deploy:symlink_shared'
 
 
