@@ -39,6 +39,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'populator'
 gem 'ffaker'
 gem 'quiet_assets', group: :development
+gem 'activerecord-reputation-system', require: 'reputation_system'
 
 
 
