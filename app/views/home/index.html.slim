@@ -2,7 +2,7 @@
 
 .container
   .row
-    .span10
+    .span9
       .super-size
         .logo
           =image_tag 'regnbuelogo.png'
@@ -11,6 +11,8 @@
         /- unless user_signed_in?
         /  a class="btn btn-primary btn-large"  data-toggle="modal" href="#loginModal" rel="nofollow"
         /    'Sign In
+    .span3
+      =render 'contact'
   .row
     .span12
       iframe width="770" height="433" src="http://www.youtube.com/embed/ABTlpB1IKKE" frameborder="0" allowfullscreen
