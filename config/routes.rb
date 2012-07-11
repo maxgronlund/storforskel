@@ -42,7 +42,7 @@ BootstrapOnRails::Application.routes.draw do
   get "blog_archive/index"
   
   
-  mount Ckeditor::Engine => '/ckeditor'
+  #mount Ckeditor::Engine => '/ckeditor'
   root :to => "home#index"  
   
   get "sugestions/index"
