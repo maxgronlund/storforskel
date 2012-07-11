@@ -10,7 +10,7 @@
 //= require twitter/bootstrap
 //= require jquery.Jcrop.min
 //= require sortable_lists
-//= require ckeditor/init
+// require ckeditor/init
 // require admin/menu_item
 //= require admin/upload_image
 //= require equal-height
