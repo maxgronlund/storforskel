@@ -17,7 +17,7 @@ gem 'simple_form'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem 'carrierwave'
 gem 'mini_magick'
-gem "ckeditor", "3.7.0.rc3"
+#gem "ckeditor", "3.7.0.rc3"
 gem 'acts_as_list'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'

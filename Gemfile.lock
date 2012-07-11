@@ -58,9 +58,6 @@ GEM
     carrierwave (0.6.1)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    ckeditor (3.7.0.rc3)
-      mime-types (~> 1.17.2)
-      orm_adapter (~> 0.0.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -139,7 +136,6 @@ GEM
       omniauth (~> 1.0)
     omniauth-twitter (0.0.9)
       omniauth-oauth (~> 1.0)
-    orm_adapter (0.0.7)
     pg (0.14.0)
     polyglot (0.3.3)
     populator (1.0.0)
@@ -223,7 +219,6 @@ DEPENDENCIES
   cancan
   capistrano
   carrierwave
-  ckeditor (= 3.7.0.rc3)
   coffee-rails (~> 3.2.1)
   ffaker
   font-awesome-rails
