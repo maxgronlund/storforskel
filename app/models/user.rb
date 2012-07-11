@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   has_many :blogs
   has_many :comments
   attr_accessible :name, :role, :email, :password, :password_confirmation, :tag_names
+  
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+  def voted_for?(blog)
+    evaluations.where(target_type: blog.class, target_id: blog.id, value: 1).present?
+  end
+  
   #has_secure_password
   #validates_presence_of :name
   #validates_confirmation_of :password

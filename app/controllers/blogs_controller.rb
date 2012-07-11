@@ -87,4 +87,11 @@ class BlogsController < ApplicationController
     goto = session.delete(:go_to) || root_path
     redirect_to goto , :notice => "Well done! The picture fits just right"
   end
+  
+  def vote
+    value = params[:type] == "up" ? 1 : 0
+    @blog = Blog.find(params[:id])
+    @blog.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Tak for din stemme"
+  end
 end

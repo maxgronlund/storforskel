@@ -7,15 +7,16 @@
       .author
         h5 Af #{link_to blog.user.name, blog.user} 
         i skrevet for #{distance_of_time_in_words(Time.now, blog.created_at)} siden
-        br
-        =pluralize blog.reputation_value_for(:votes).to_i, "" 
-        'Kan lide artiklen
+        =pluralize blog.reputation_value_for(:votes).to_i, "vote"
+        'hfhfh
+        = link_to "up", vote_blog_path(blog, type: "up"), method: "post"
         ==render 'blogs/links', :blog => blog
+        
       .content
-    .span6
+    .span4
       =simple_format blog.body.truncate(264)
-      
-      =link_to 'Læs hele artikelen og komentarer', blog, class: 'btn'
+      br
+      =link_to 'Læs hele artikelen og komentarer', blog
 hr
       
       

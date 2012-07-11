@@ -68,3 +68,11 @@ BootstrapOnRails::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+
+ENV['TWITTER_CONSUMER_KEY'] = "eUQQgrhHndDcOc7gW3nIWw"
+ENV['TWITTER_CONSUMER_SECRET'] = '2mLqvktIxukB6cp1xAZSzVKrwKoCgTVE9iMrbdFomVU'
+
+
+ENV['FACEBOOK_CONSUMER_KEY'] = "466198460057291"
+ENV['FACEBOOK_CONSUMER_SECRET'] = '2f40d6b7edeea96c88cd1199ed9c17a8'

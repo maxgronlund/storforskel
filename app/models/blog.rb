@@ -5,6 +5,8 @@ class Blog < ActiveRecord::Base
   
   has_many :comments, as: :commentable
   
+  has_reputation :votes, source: :user, aggregated_by: :sum
+  
   mount_uploader :pdf_download, PdfUploader
   mount_uploader :image, ImageUploader
   

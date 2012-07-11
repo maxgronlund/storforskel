@@ -35,6 +35,7 @@ gem 'omniauth-identity'
 
 gem 'uglifier', '>= 1.0.3'
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'populator'
 gem 'ffaker'

@@ -13,6 +13,27 @@
           .author
             h5 Af #{@blog.user.name} 
             i skrevet for #{distance_of_time_in_words(Time.now, @blog.created_at)} siden
+            br
+            =pluralize @blog.reputation_value_for(:votes).to_i, ""
+            'Kan lide artiklen
+            
+            
+            br
+            -if user_signed_in?
+              -if  !current_user.voted_for?(@blog) 
+                =link_to( vote_blog_path(@blog, type: "up"), :method => :post) do
+                   .btn
+                     i class="icon-thumbs-up"
+                     '&nbsp;Godt indlæg
+                '&nbsp;
+              -else
+                =link_to( vote_blog_path(@blog, type: "down"), :method => :post) do
+                   .btn
+                     i class="icon-thumbs-down"
+                     '&nbsp;Fjern stemme
+           
+              
+            br
             ==render 'links', :blog => @blog
           .content
             hr

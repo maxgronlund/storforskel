@@ -26,6 +26,7 @@ BootstrapOnRails::Application.routes.draw do
     member do
       get 'crop'
       put 'crop_update'
+      post 'vote'
     end
   end
   resources :comments
