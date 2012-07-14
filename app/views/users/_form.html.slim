@@ -7,7 +7,7 @@
           .thumbnail
             = image_tag(@user.image_url :large)
             .caption
-              - unless @user.image_url == '/assets/fallback/default.png'
+              - unless @user.image_url == '/assets/fallback/default.jpg'
                 = link_to 'Edit image', crop_user_path(@user, :version => :large), :class =>'btn btn-mini'
                 br
                 br

@@ -18,8 +18,10 @@ class Ability
         can :read, Comment
         can :manage, Blog, :user_id => user.id # <--- Allow user to manage own blog posts
         can :read, Blog
+        can :vote, Blog
         can :manage, User, :id => user.id # <--- Allow user to manage them self
         can :read, User
+        
         # add application-specific changes below
 
       end

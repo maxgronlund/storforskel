@@ -14,7 +14,7 @@
               .caption
                 h5 Email: <small>#{ @user.email}</small>
         - if can?(:manage, User)
-            =link_to 'Rediger konto', edit_user_path(@user)
+            =link_to 'Rediger konto', edit_user_path(@user), class: 'btn'
         
       .span4
         '&nbsp;
