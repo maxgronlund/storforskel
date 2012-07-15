@@ -41,7 +41,7 @@ gem 'populator'
 gem 'ffaker'
 gem 'quiet_assets', group: :development
 gem 'activerecord-reputation-system', require: 'reputation_system'
-
+gem 'responders'
 
 
 # Gems used only for assets and not required

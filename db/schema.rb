@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711085927) do
+ActiveRecord::Schema.define(:version => 20120715061834) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(:version => 20120711085927) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
